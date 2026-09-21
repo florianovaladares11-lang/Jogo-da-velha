@@ -1,4 +1,4 @@
-mport random
+import random
 
 def jogo_da_velha_inteligente():
     tabuleiro = [" " for _ in range(9)]
@@ -24,7 +24,6 @@ def jogo_da_velha_inteligente():
         return False
     
     def jogada_computador():
-        # 1. Tentar ganhar
         for i in range(9):
             if tabuleiro[i] == " ":
                 tabuleiro[i] = "O"
@@ -32,7 +31,6 @@ def jogo_da_velha_inteligente():
                     return i
                 tabuleiro[i] = " "
         
-        # 2. Bloquear jogador
         for i in range(9):
             if tabuleiro[i] == " ":
                 tabuleiro[i] = "X"
@@ -41,12 +39,10 @@ def jogo_da_velha_inteligente():
                     return i
                 tabuleiro[i] = " "
         
-        # 3. Escolher centro
         if tabuleiro[4] == " ":
             tabuleiro[4] = "O"
             return 4
         
-        # 4. Escolher canto
         cantos = [0,2,6,8]
         random.shuffle(cantos)
         for i in cantos:
@@ -54,7 +50,6 @@ def jogo_da_velha_inteligente():
                 tabuleiro[i] = "O"
                 return i
         
-        # 5. Escolher lateral
         laterais = [1,3,5,7]
         random.shuffle(laterais)
         for i in laterais:
@@ -62,7 +57,7 @@ def jogo_da_velha_inteligente():
                 tabuleiro[i] = "O"
                 return i
 
-    jogador_atual = "X"  # Você é X
+    jogador_atual = "X"  
     rodadas = 0
 
     while rodadas < 9:
